@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Spend Tracker</title>
+</head>
+<body>
+  <h2>Enter Daily Spend</h2>
+  <form id="spendForm">
+    <label>Date: <input type="date" name="date" required></label><br>
+    <label>Category: <input type="text" name="category" required></label><br>
+    <label>Amount: <input type="number" name="amount" required></label><br>
+    <label>Notes: <input type="text" name="notes"></label><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('spendForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const entry = Object.fromEntries(data.entries());
+      fetch('https://your-backend-url.com/submit', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(entry)
+      }).then(res => alert('Spend submitted!'));
+    });
+  </script>
+</body>
+</html>
