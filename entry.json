@@ -1,0 +1,20 @@
+<script>
+  function saveEntry(event) {
+    event.preventDefault();
+
+    const entry = {
+      date: document.querySelector('[name="date"]').value,
+      creditCard: document.querySelector('[name="creditCard"]').value,
+      category: document.querySelector('[name="category"]').value,
+      amount: document.querySelector('[name="amount"]').value,
+      notes: document.querySelector('[name="notes"]').value,
+      cashback: document.querySelector('[name="cashback"]').value
+    };
+
+    const blob = new Blob([JSON.stringify(entry, null, 2)], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'entry.json';
+    link.click();
+  }
+</script>
