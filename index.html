@@ -2,6 +2,16 @@
 <html>
 <head>
   <title>Spend Tracker</title>
+  <script>
+  const now = new Date();
+  const month = now.toLocaleString('default', { month: 'short' }).toUpperCase().slice(0, 3);
+  const expectedPassword = '#iamb' + month;
+  const userPassword = prompt("Enter password:");
+  if (userPassword !== expectedPassword) {
+    alert("Incorrect password. Access denied.");
+    document.body.innerHTML = "<h2>Access Denied</h2>";
+  }
+</script>
 </head>
 <body>
   <script>
