@@ -2,58 +2,6 @@
 <html>
 <head>
   <title>Spend Tracker</title>
-  <script>
-    const now = new Date();
-    const month = now.toLocaleString('default', { month: 'short' }).toUpperCase().slice(0, 3);
-    const expectedPassword = '#iamb' + month;
-    const userPassword = prompt("Enter password:");
-    if (userPassword !== expectedPassword) {
-      alert("Incorrect password. Access denied.");
-      document.body.innerHTML = "<h2>Access Denied</h2>";
-    }
-  </script>
-</head>
-<body>
-  <h2>Enter Daily Spend</h2>
-  <form id="spendForm">
-    <label>Date: <input type="date" name="date" required></label><br>
-    <label>Credit Card:
-      <select name="creditCard" required>
-        <option value="">--Select--</option>
-        <option>HDFC TATA NEU</option>
-        <option>AXIS AIRTEL</option>
-        <option>AXIS MYZONE</option>
-        <option>SBI SIMPLYSAVE</option>
-        <option>ROAR BANK</option>
-        <option>AXIS PRIVILAGE</option>
-        <option>HDFC SWIGGY</option>
-        <option>JUPITER</option>
-        <option>YES RUPAY</option>
-        <option>INDUSIND EAZYDINER</option>
-        <option>ONECARD</option>
-        <option>YES ACE</option>
-        <option>RBL SHOPRITE</option>
-      </select>
-    </label><br>
-    <label>Category: <input type="text" name="category" required></label><br>
-    <label>Amount: <input type="number" name="amount" required></label><br>
-    <label>Cashback Earned: <input type="number" name="cashback" required></label><br>
-    <label>Notes: <input type="text" name="notes"></label><br>
-    <button type="submit">Submit</button>
-  </form>
-
-  <script>
-    document.getElementById('spendForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target).entries());
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'entry.json';
-      link.click();
-      alert('entry.json downloaded — upload it to GitHub to update your Excel file.');
-    });
-  </script>
   <style>
   body {
     font-family: Arial, sans-serif;
@@ -120,5 +68,57 @@
     }
   }
 </style>
+  <script>
+    const now = new Date();
+    const month = now.toLocaleString('default', { month: 'short' }).toUpperCase().slice(0, 3);
+    const expectedPassword = '#iamb' + month;
+    const userPassword = prompt("Enter password:");
+    if (userPassword !== expectedPassword) {
+      alert("Incorrect password. Access denied.");
+      document.body.innerHTML = "<h2>Access Denied</h2>";
+    }
+  </script>
+</head>
+<body>
+  <h2>Enter Daily Spend</h2>
+  <form id="spendForm">
+    <label>Date: <input type="date" name="date" required></label><br>
+    <label>Credit Card:
+      <select name="creditCard" required>
+        <option value="">--Select--</option>
+        <option>HDFC TATA NEU</option>
+        <option>AXIS AIRTEL</option>
+        <option>AXIS MYZONE</option>
+        <option>SBI SIMPLYSAVE</option>
+        <option>ROAR BANK</option>
+        <option>AXIS PRIVILAGE</option>
+        <option>HDFC SWIGGY</option>
+        <option>JUPITER</option>
+        <option>YES RUPAY</option>
+        <option>INDUSIND EAZYDINER</option>
+        <option>ONECARD</option>
+        <option>YES ACE</option>
+        <option>RBL SHOPRITE</option>
+      </select>
+    </label><br>
+    <label>Category: <input type="text" name="category" required></label><br>
+    <label>Amount: <input type="number" name="amount" required></label><br>
+    <label>Cashback Earned: <input type="number" name="cashback" required></label><br>
+    <label>Notes: <input type="text" name="notes"></label><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('spendForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'entry.json';
+      link.click();
+      alert('entry.json downloaded — upload it to GitHub to update your Excel file.');
+    });
+  </script>
 </body>
 </html>
